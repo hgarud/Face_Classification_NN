@@ -11,7 +11,8 @@ A neural network extension of the Face Classification [repository].
 Any type of neural network typically requires a large amount of training data for effective inference. Hence, there is a need to increase the size of the dataset used previously.
 
 Steps that can be taken to increase the existing dataset:
-* Go to [this link] and select one of the provided 17 face datasets which has face bounding boxes annotated. Download the dataset (note that some of the 17 datasets might need registration to download and you can skip those to save time). Extract n = 10,000 training images (or more, you can combine multiple datasets) for face and non-face respectively.
+* Go to [this link] and select one of the provided 17 face datasets which has face bounding boxes annotated. Download the dataset (note that some of the 17 datasets might need registration to download and you can skip those to save time).  
+Extract n = 10,000 training images (or more, you can combine multiple datasets) for face and non-face respectively.
 * Augment the existing dataset using image transformations like random crop, mirroring, adding random noise, etc.
 * Be fancy! Train a pair of adversarial networks to generate images for you. (That's what I did :p)  
 Use **​Deep Convolutional ​Generative Adversarial Networks (DCGAN)** to augment the
@@ -25,15 +26,15 @@ Implementation of DCGAN is straight-forward and according to the README provided
 Using a **batch size of 64** (increasing the batch size didn't help. Did not tune other parameters as this was just an exploratory excursion into GANs), the networks gave me the following images:  
 *(Reader beware! Parental guidance advised.)*
 
-* After 100 epochs
+* After 100 epochs *( I have had nightmares from images produced until this epoch :( )*
 
 ![GAN 100eps][100eps]
 
-* After 200 epochs
+* After 200 epochs *( I did not have nightmares from images produced at this epoch :) )*
 
 ![GAN 200eps][200eps]
 
-* After 225 epochs
+* After 225 epochs *( I have had nightmares from images produced after this epoch :( )*
 
 ![GAN 225eps][225eps]
 
@@ -55,6 +56,9 @@ There are two main methods of preprocessing training data for neural nets/deep n
 ## Network Architecture
 **3 Convolutional layers** ​with ​**32**, **​64**​, and **​128** ​filters ​respectively.
 This is followed by a ​**dense neural network** ​having **​2 hidden layers**​ with ​**1500** and **​200 neurons** respectively. The output of this network is a **​one-hot encoded** ​vector with 2 classes for Face and Non-Face class.
+
+***keras_nn.py*** uses the Keras higher level API with a GPU enabled Tensorflow backend.  
+***tf_cnn.py*** uses the native TEnsorflow API.
 
 ## Findings
 Using the **SGD optimizer saturated the test accuracy to 97% for 2000 training samples**.
@@ -84,6 +88,7 @@ only possible for ​1 epoch ​ and for ​10 distinct values.
 [carpedm20's repo]: https://github.com/carpedm20/DCGAN-tensorflow
 [here]: https://arxiv.org/pdf/1511.06434.pdf
 [there]: https://arxiv.org/pdf/1406.2661.pdf
+[prep]: https://github.com/hgarud/Face_Classification_NN/blob/master/Graphics/Zero-centered.png
 [100eps]: https://github.com/hgarud/Face_Classification_NN/blob/master/Graphics/GAN-Faces-100eps.png
 [200eps]: https://github.com/hgarud/Face_Classification_NN/blob/master/Graphics/GAN-Faces-200eps.png
 [225eps]: https://github.com/hgarud/Face_Classification_NN/blob/master/Graphics/GAN-Faces-225eps.png
