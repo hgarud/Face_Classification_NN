@@ -13,15 +13,17 @@ Any type of neural network typically requires a large amount of training data fo
 Steps that can be taken to increase the existing dataset:
 * Go to [this link] and select one of the provided 17 face datasets which has face bounding boxes annotated. Download the dataset (note that some of the 17 datasets might need registration to download and you can skip those to save time). Extract n = 10,000 training images (or more, you can combine multiple datasets) for face and non-face respectively.
 * Augment the existing dataset using image transformations like random crop, mirroring, adding random noise, etc.
-* Be fancy! Train a pair of adversarial networks to generate images for you. (That's what I did :p)
+* Be fancy! Train a pair of adversarial networks to generate images for you. (That's what I did :p)  
 Use **​Deep Convolutional ​Generative Adversarial Networks (DCGAN)** to augment the
-dataset. I implemented the Tensorflow implementation of a DCGAN from [​this].
+dataset. I implemented the Tensorflow implementation of a DCGAN from [carpedm20's repo].
 
 ## Data Augmentation
 
 Fantastic papers [here] and [there] on DCGAN and GANs. Read.
 
-Implementation of DCGAN is straight-forward and according to the README provided in the above linked repo. Using the images from FDDB dataset as training images for the networks, I was able to generate images having socially acceptable faces. Using a **batch size of 64** (increasing the batch size didn't help. Did not tune other parameters as this was just an exploratory excursion into GANs), the networks gave me the following images: *(Reader beware! Parental guidance advised.)*
+Implementation of DCGAN is straight-forward and according to the README provided in the above linked repo. Using the images from FDDB dataset as training images for the networks, I was able to generate images having socially acceptable faces.  
+Using a **batch size of 64** (increasing the batch size didn't help. Did not tune other parameters as this was just an exploratory excursion into GANs), the networks gave me the following images:  
+*(Reader beware! Parental guidance advised.)*
 
 * After 100 epochs
 
@@ -79,7 +81,7 @@ only possible for ​1 epoch ​ and for ​10 distinct values.
 
 [repository]: https://github.com/hgarud/Face_Classification
 [this link]: https://github.com/betars/Face-Resources
-[this]: https://github.com/carpedm20/DCGAN-tensorflow
+[carpedm20's repo]: https://github.com/carpedm20/DCGAN-tensorflow
 [here]: https://arxiv.org/pdf/1511.06434.pdf
 [there]: https://arxiv.org/pdf/1406.2661.pdf
 [100eps]: https://github.com/hgarud/Face_Classification_NN/blob/master/Graphics/GAN-Faces-100eps.png
